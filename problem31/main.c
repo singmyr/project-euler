@@ -24,7 +24,7 @@ int getCombinations(int index, int sum) {
     if(sum <= 0) {
         return 0;
     }
-    
+
     // Check if it's the last index.
     if(index == sizeof(coins)/sizeof(const int) - 1) {
         return 1;
@@ -36,7 +36,7 @@ int getCombinations(int index, int sum) {
     int rest = 0;
     do {
         rest = sum - (i++ * coins[index]);
-        combinations += getCombinations(index + 1, rest);;
+        combinations += getCombinations(index + 1, rest);
     } while(rest > 0);
 
     return rest == 0 ? combinations + 1 : combinations;
