@@ -8,7 +8,9 @@
 int main(int argc, char* argv[]) {
     unsigned long target = 600851475143;
     int prime = 0;
-    for(int i = 2; i < target; ++i) {
+
+	unsigned long product = 1;
+    for(int i = 2; i < (target * .5); ++i) {
         // Check if i is a prime number.
         if(!(i & 1)) {
             continue;
@@ -23,7 +25,12 @@ int main(int argc, char* argv[]) {
         }
 
         if(prime && target % i == 0) {
-            printf("Prime factor: %d\n", i);
+			printf("Prime factor: %d\n", i);
+			
+			product *= i;
+			if(product == target) {
+				break;
+			}
         }
     }
 
