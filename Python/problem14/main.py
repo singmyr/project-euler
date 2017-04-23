@@ -10,5 +10,38 @@
 # Which starting number, under one million, produces the longest chain?
 # NOTE: Once the chain starts the terms are allowed to go above one million.
 
+chainLookup = dict()
 
 
+def main():
+    longestChain = 0
+    longestN = 0
+
+    for i in range(1000000):
+        chain = calculateChain(i)
+        if chain > longestChain:
+            longestChain = chain
+            longestN = i
+
+    print(longestN, "with a length of", longestChain)
+
+
+def calculateChain(n):
+    original = n
+    count = 0
+    while n > 1:
+        if n % 2 == 0:
+            n *= .5
+        else:
+            n = (3 * n) + 1
+        count += 1
+        if n in chainLookup:
+            count += chainLookup[n]
+            chainLookup[original] = count
+            return count
+    chainLookup[original] = count + 1
+    return count + 1
+
+
+if __name__ == "__main__":
+    main()
