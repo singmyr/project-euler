@@ -16,7 +16,7 @@ int64_t dive(int x, int y, int m) {
 }
 
 int main(int argc, char* argv[]) {
-    printf("Result: %llu\n", dive(0, 0, 20));
+    printf("Result: %llu\n", dive(0, 0, 17));
 
     return 0;
 }
